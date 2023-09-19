@@ -24,9 +24,10 @@ export const helloWorldSteps = ({
 		await userEvent.click(button)
     })
 
-	When(/^the user does a right click in the button (.*)$/, (arg0) => {
+	When(/^the user does a right click in the button (.*)$/, async (arg0) => {
 		const button = screen.getByTestId(arg0)
 		fireEvent.contextMenu(button)
+		await new Promise(resolve => setTimeout(resolve, 500))
     })
 
 	Then(/^the title should show (.*)$/, (arg0) => {
